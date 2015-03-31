@@ -80,7 +80,7 @@
 							items.push(val);// load array here
 							var str = decodeURIComponent( val['HHDescription'] );						
 							var d = str.replace(/[+]/g, ' ');
-							alert("Count: "+ val.length);
+							//alert("Count: "+ val.length);
 							a1 += '<article>';						
 							a1 += '<a href="all-single.html?myParam='+val['id']+'"> ';
 							a1 += '	<h1><b>'+val['name']+'</b></h1><h2><p>'+d+'</p></br><div class="cel1"><font color="black">'+fixNum(val['distance'])+' miles away </div><div class="divider"/><div class="cel2">'+val['st1']+' to '+val['et1']+'</font></div><h2>';	
