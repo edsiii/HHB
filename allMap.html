@@ -38,7 +38,7 @@
 			var lon1 = "-96.012990";
 			var contentString = "";
 			var d = new Date();
-			var dayofweek = 6; //d.getDay();
+			var dayofweek = (d.getDay() +1);
 			var infowindow = null;
 			var mInfo = []; //"Lookie here";
 			var mInfo2 = [];
@@ -89,7 +89,7 @@
 						//var items = [];						
 						$.each( data, function ( i, val ) {
 							items.push(val);// load array here							
-							var g = val['Name']+' '+val['Address']+' '+val['City']+' '+val['State']+' '+val['Zip']+' tel: '+ val['Phone'];
+							var g = val['Name']+' '+val['Address']+' '+val['City']+' '+val['State']+' '+val['Zip']+' Tel: '+ val['Phone'];
 							var f = '</br><a href="https://maps.google.com?saddr=Current+Location&daddr='+val['Address']+' '+val['City']+' '+val['State']+' '+val['Zip']+'">Driving Directions</a>';
 							mInfo.push( g+f);
 							mInfo2.push( g);

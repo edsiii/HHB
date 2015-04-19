@@ -64,11 +64,11 @@
 					//alert('http://omahahappyhours.com/omaha3/services/s2.php?Id='+myParam+'&x=109');
 					//add DOW, current time of day HH:MM
 					//$.getJSON('http://omahahappyhours.com/omaha3/services/s2.php?Id='+myParam+'&x=109',
-					$.getJSON('http://omahahappyhours.com/omaha3/services/s2.php?Id='+myParam+' ',
+					$.getJSON('http://omahahappyhours.com/omaha3/services/s2.php?Id='+myParam+'&x=109 ',
 					// No additional parameters sent- If you want you can send below  
 					{},
 					function (data) { 
-						//alert('yea 2 ');											
+						//alert('yea 2 '+data.length);											
 						$.each( data, function ( i, val ) {
 							items.push(val);// load array here
 							
