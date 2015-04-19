@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.iwd3.HHOmaha" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.omahahappyhours.HHOmaha" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>HHOmaha</name>
     <description>
-        HHOmaha.
+        Find Happy Hour in Omaha
     </description>
-    <author email="support@iwd3.com" href="http://iwd3.com">
-        IWD3 Team
+    <author email="paul@omahahappyhours.com" href="http://omahahappyhours.com">
+        IWD3 and omahahappyhours.com Team
     </author>
 	
 	<feature name="http://api.phonegap.com/1.0/device" />
