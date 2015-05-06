@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="air.omahahh1.A1.A1" version="200.000.000" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>HHOmaha</name>
+<widget id="com.omahahappyhours.HHO" version="200.000.000" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Happy Hours</name>
     <description>
-        Find Happy Hour in Omaha
+        Find Happy Hours in Omaha
     </description>
     <author email="paul@omahahappyhours.com" href="http://omahahappyhours.com">
         IWD3 and omahahappyhours.com Team
