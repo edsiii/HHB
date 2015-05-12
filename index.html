@@ -54,10 +54,27 @@
 			
 			var gaPlugin;
 			function onDeviceReady() {
+				document.addEventListener("backbutton",onBackKeyDown,true);
+				
 				gaPlugin = window.plugins.gaPlugin;
 				gaPlugin.init(successHandler, errorHandler, "UA-59316302-1", 10);
 				
 				gaPlugin.trackEvent( nativePluginResultHandler, nativePluginErrorHandler, "Menu", "Select", "Menu", 1);
+			}
+			
+			function onBackKeyDown(){
+				//navigator.device.exitApp();
+				navigator.notification.confirm(
+					'Do you really want to exit?',  // message
+					exitFromApp,              // callback to invoke with index of button pressed
+					'Exit',            // title
+					'Cancel,OK'         // buttonLabels
+				);
+			}
+			function exitFromApp(buttonIndex) {
+			  if (buttonIndex==2){
+			   navigator.app.exitApp();
+				}
 			}
 			
 			jQuery(function(){
