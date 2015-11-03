@@ -31,7 +31,6 @@
 			var myParam = location.search.split('myParam=')[1];
 			//alert("Look "+ myParam);
 			var items = [];
-			var a1 = "";
 			//var lat1 = "-34.397";
 			//var lon1 = "150.644";
 			var lat1 = "41.260482";
@@ -52,32 +51,39 @@
 			}
 			
 			jQuery(function(){	
-				
-				// GPS
-				navigator.geolocation.getCurrentPosition(function(position)
-				{
-					// just to show how to access latitute and longitude
-					//var location = [position.coords.latitude, position.coords.longitude];
-					//lat1 = position.coords.latitude;
-					//lon1 = position.coords.longitude;
-					
-					//alert(dayofweek+' look: '+ location);
-					if ( panelA() == "ok" ) {
-						//alert("X "+ items.length);
-						if ( lat1 != '0') {
-							setTimeout(function(){ loadScript(); }, 3000);
-						};
-					};
-				},
-				function(error)
-				{
-					// error getting GPS coordinates
-					alert('code: ' + error.code + ' with message: ' + error.message + '\n');
-				}, 
-				{ enableHighAccuracy: true, maximumAge: 3000, timeout: 8000 });
-				// END GPS
-				
-				
+				/*
+        if ("geolocation" in navigator) {
+          // GPS
+          navigator.geolocation.getCurrentPosition(function(position)
+          {
+            // just to show how to access latitute and longitude
+            //var location = [position.coords.latitude, position.coords.longitude];
+            //lat1 = position.coords.latitude;
+            //lon1 = position.coords.longitude;
+            
+            //alert(dayofweek+' look: '+ location);
+            if ( panelA() == "ok" ) {
+              //alert("X "+ items.length);
+              if ( lat1 != '0') {
+                setTimeout(function(){ loadScript(); }, 3000);
+              };
+            };
+          },
+          function(error)
+          {
+            // error getting GPS coordinates
+            alert('code: ' + error.code + ' with message: ' + error.message + '\n');
+          }, 
+          { enableHighAccuracy: true, maximumAge: 3000, timeout: 8000 });
+          // END GPS
+        }
+        else {
+        */
+          panelA();
+          setTimeout(function(){ loadScript(); }, 3000)
+            /*
+        }
+				*/
 				function panelA() {
 					//alert('yea 1');	
 					//var link = 'http://omahahappyhours.com/omaha3/services/s0.php?lat='+lat1+'&long='+lon1+'&dayofweek='+dayofweek+'&timeofday=10:00';
@@ -86,24 +92,14 @@
 					{},
 					function (data) {  
 						//alert('yea 2');					
-						//var items = [];						
 						$.each( data, function ( i, val ) {
 							items.push(val);// load array here							
-							var g = val['Name']+' '+val['Address']+' '+val['City']+' '+val['State']+' '+val['Zip']+' Tel: '+ val['Phone'];
+							var g = val['Name']+' '+val['Address']+' '+val['City']+' '+val['State']+' '+val['Zip']+' tel: '+ val['Phone'];
 							var f = '</br><a href="https://maps.google.com?saddr=Current+Location&daddr='+val['Address']+' '+val['City']+' '+val['State']+' '+val['Zip']+'">Driving Directions</a>';
 							mInfo.push( g+f);
 							mInfo2.push( g);
-									
-							a1 += '<h2><a href="#">'+val['Name']+'</a></h2>';
-							a1 += 'lat: '+items[i].Latitude+' : '+items[i].Longitude+' ';
-							//a1 += 'lat: '+items+' ';
-							//a1 += '<br/>';
-							
-							//lat1 = val['Latitude'];
-							//lon1 = val['Longitude'];
 						});
 						
-						//$('#1-data').html(a1);
 						$('#1-data').html("");
 					});
 										
@@ -185,21 +181,8 @@
 				  });
 				*/  
 				
-				AutoCenter();
 			}
 
-			function AutoCenter() {
-				//  Create a new viewpoint bound
-				var bounds = new google.maps.LatLngBounds();
-				//  Go through each...
-				$.each(markers, function (index, marker) {
-					bounds.extend(marker.position);
-				});
-				//  Fit these bounds to the map
-				map.fitBounds(bounds);
-			}
-
-  
 			function loadScript() {
 			//alert("xxxx");
 			  var script = document.createElement('script');

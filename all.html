@@ -51,7 +51,6 @@
 				function(error)
 				{
 					// error getting GPS coordinates
-					alert('code: ' + error.code + ' with message: ' + error.message + '\n');
 					panelA();
 				}, 
 				{ enableHighAccuracy: true, maximumAge: 3000, timeout: 8000 });

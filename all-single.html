@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
-		<meta name="author" content="www.frebsite.nl" />
-		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 
+    
 		<title>Omaha Happy Hour</title>
 		<link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
@@ -13,7 +13,9 @@
 
 		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 		<link rel="apple-touch-startup-image" href="img/apple-touch-startup-image.png">
-		
+	
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
+
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.mmenu.min.all.js"></script>
 		<script type="text/javascript" src="js/jquery.easy-pie-chart.js"></script>
@@ -30,7 +32,6 @@
 		<script>
 			var myParam = location.search.split('myParam=')[1];
 			//alert("Look "+ myParam);
-			var items = [];
 			var a1 = "";
 			var lat1 = "-34.397";
 			var lon1 = "150.644";
@@ -64,14 +65,11 @@
 					//alert('http://omahahappyhours.com/omaha3/services/s2.php?Id='+myParam+'&x=109');
 					//add DOW, current time of day HH:MM
 					//$.getJSON('http://omahahappyhours.com/omaha3/services/s2.php?Id='+myParam+'&x=109',
-					$.getJSON('http://omahahappyhours.com/omaha3/services/s2.php?Id='+myParam+'&x=109 ',
+					$.getJSON('http://omahahappyhours.com/omaha3/services/s2.php?Id='+myParam+' ',
 					// No additional parameters sent- If you want you can send below  
 					{},
 					function (data) { 
-						//alert('yea 2 '+data.length);											
 						$.each( data, function ( i, val ) {
-							items.push(val);// load array here
-							
 							a1 += '<article>';
 							if ( myParam != null || myParam != "") {
 									a1 += '</br><img src="http://omahahappyhours.com/omaha3/services/img/'+myParam+'.jpg" alt="Image not found" onError="this.src="img/gallery/2.jpg"/>';
@@ -85,7 +83,7 @@
 									
 									a1 += '<h1><b><font size="6">'+val['Name']+'</font></b></h1>';
 									mInfo = '<font size="3">'+val['Address']+"</br>"+val['City']+" "+val['State']+" "+val['Zip']+'</br><a href="tel:'+ val['Phone']+'" style="color: rgb(0,0,0)"> Tel: '+ val['Phone']+'</br><a href="https://maps.google.com?saddr=Current+Location&daddr='+val['Address']+' '+val['City']+' '+val['State']+' '+val['Zip']+'"style="color: rgb(0,0,0)">Driving Directions</a>';
-									a1 += mInfo+'</br><a href="http://'+val['URL']+'" style="color: rgb(0,0,0)">'+val['URL']+'</a></font></br>';
+									a1 += mInfo+'</br><a href="javascript:cordova.InAppBrowser.open(\'http://'+val['URL']+'\')" style="color: rgb(0,0,0)">'+val['URL']+'</a></font></br>';
 									
 									//a1 += '</br><font size="4"><a href="https://maps.google.com?saddr=Current+Location&daddr='+val['Address']+' '+val['City']+' '+val['State']+' '+val['Zip']+' style="color: rgb(0,0,0);">Driving Directions</a>';
 									
@@ -249,7 +247,6 @@
 		
 		function pgDetails(id) {
 				
-			var items = [];
 			var a0 = "";
 			var a1 = "";
 			var a2 = "";
@@ -266,38 +263,34 @@
 				{},
 				function (data) {  					
 					$.each( data, function ( i, val ) {
-						items.push(val);// load array here							
-						//alert(" Look: " );
 						var str = decodeURIComponent( val['HHDescription'] );						
 						var d = str.replace(/[+]/g, ' ');
-
 						switch(val['DayOfWeekId']) {
-							case '1':
+							case '0':
 								a0 += '<h2><b>Happy Hour '+val['st1']+' to '+val['et1']+'</b></h2>';
 								a0 += '<h2>'+d+'</h2>';
 							break;
-							case '2':
+							case '1':
 								a1 += '<h2><b>Happy Hour '+val['st1']+' to '+val['et1']+'</b></h2>';
 								a1 += '<h2>'+d+'</h2>';
 							break;
-							
-							case '3':
+							case '2':
 								a2 += '<h2><b>Happy Hour '+val['st1']+' to '+val['et1']+'</b></h2>';
 								a2 += '<h2>'+d+'</h2>';
 							break;
-							case '4':
+							case '3':
 								a3 += '<h2><b>Happy Hour '+val['st1']+' to '+val['et1']+'</b></h2>';
 								a3 += '<h2>'+d+'</h2>';
 							break;
-							case '5':
+							case '4':
 								a4 += '<h2><b>Happy Hour '+val['st1']+' to '+val['et1']+'</b></h2>';
 								a4 += '<h2>'+d+'</h2>';
 							break;
-							case '6':
+							case '5':
 								a5 += '<h2><b>Happy Hour '+val['st1']+' to '+val['et1']+'</b></h2>';
 								a5 += '<h2>'+d+'</h2>';
 							break;
-							case '7':
+							case '6':
 								a6 += '<h2><b>Happy Hour '+val['st1']+' to '+val['et1']+'</b></h2>';
 								a6 += '<h2>'+d+'</h2>';
 							break;
@@ -382,49 +375,6 @@
 			</div>
 			<div id="content">
 				<div id="1-data">Loading...</br><div style="text-align: center;width:100%"><img src="img/logo1.png" width="225" height="50" /></div></div>
-				<!--
-				<article>
-					<img src="img/gallery/2.jpg" />
-					
-					<div class="prod-single-content-h">
-						<div class="prod-pricePane" style="Display: none">
-							<span class="last-price">9.95</span>
-							<span class="current-price">6.95</span>
-							<span class="currency">$</span>
-						</div>
-						
-						<div class="products-ratings" style="Display: none">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star-half-empty"></i>
-						</div>
-					</div>
-					<div class="prod-single-content">
-						<h2><a href="#">Company Name</a></h2>
-						<br/>
-						<p>
-							Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-						</p>
-					</div>
-					<div class="product-single-meta">
-						<div class="p-single-meta-likes" style="Display: none">
-							<h4>Like</h4>
-							<i class="fa fa-thumbs-up"></i> 21
-						</div>
-						
-						<div class="p-single-meta-share">
-							<h4>Share</h4>
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-google-plus"></i></a>
-						</div>
-						
-					</div>
-				</article>
-				-->
-				
 			</div>
 			<div class="subFooterEDS">Copyright 2015. All rights reserved.</div>
 			

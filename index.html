@@ -33,6 +33,25 @@
 			var dayofweek  = myDate.getDay();
 			
 			/*
+			if(navigator.app){
+					navigator.app.exitApp();
+			}else if(navigator.device){
+					navigator.device.exitApp();
+			}
+
+			function showConfirm() {
+					navigator.notification.confirm(
+						'Do you really want to exit?',  // message
+						exitFromApp,              // callback to invoke with index of button pressed
+						'Exit',            // title
+						'Cancel,OK'         // buttonLabels
+					);
+			}    
+			function exitFromApp(buttonIndex) {
+			  if (buttonIndex==2){
+			   navigator.app.exitApp();
+			}
+		
 			// google Ana: https://github.com/phonegap-build/GAPlugin/blob/340201342d7f33b3838f7d280b5cfc98aef4344d/README.md
 			1)  resultHandler - a function that will be called on success
 			2)  errorHandler - a function that will be called on error.
